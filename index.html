@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NostrCord</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- left servers -->
+  <div class="servers" id="servers"></div>
+
+  <!-- channels / notifications -->
+  <div class="channels" id="channels"></div>
+
+  <!-- main content -->
+  <div class="main-content" id="mainContent">
+    <div class="chat-header">
+      <span id="chat-header-text">#general</span>
+      <div class="buttons">
+        <button onclick="joinStream('audio')">Join Audio</button>
+        <button onclick="joinStream('video')">Join Video</button>
+      </div>
+    </div>
+
+    <!-- streams -->
+    <div class="streams-container" id="streams-container">
+      <div class="main-stream" id="main-stream">No stream selected</div>
+      <div class="secondary-streams" id="streams"></div>
+    </div>
+
+    <!-- center content -->
+    <div class="center-area" id="centerArea">
+
+      <!-- chat messages -->
+      <div class="messages" id="messages"></div>
+
+      <!-- chat input -->
+      <div class="input" id="chatComposer">
+        <input id="msgInput" placeholder="Message #general" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+
+      <!-- profile page (hidden until toggled) -->
+      <div class="profile-page hidden" id="profilePage">
+        <div class="profile-banner" id="profileBanner">
+          <img id="bannerImg" src="" alt="banner" />
+        </div>
+        <div class="profile-head">
+          <div class="profile-pic" id="profilePic"><img id="profilePicImg" src="" /></div>
+          <div class="profile-meta">
+            <div class="display-name" id="profileDisplayName">NostrBot</div>
+            <div class="npub small" id="profileNpub">npub1qxyz…</div>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div id="followersCount"><strong>0</strong> Followers</div>
+          <div id="followingCount"><strong>0</strong> Following</div>
+          <div id="lightningAddr" class="small">⚡ <span id="lnAddr">lnbc1example</span></div>
+        </div>
+        <div class="profile-actions-row">
+          <button class="btn-outline" onclick="editProfile()">Edit Profile</button>
+          <button class="btn-outline" onclick="toggleProfileView()">Back</button>
+        </div>
+
+        <div class="feed-composer">
+          <textarea id="postText" placeholder="What's happening? (post to your Nostr feed)"></textarea>
+          <div style="display:flex;justify-content:flex-end;margin-top:8px">
+            <button onclick="createPost()" class="btn-outline">Post</button>
+          </div>
+        </div>
+
+        <div class="feed-posts" id="feedPosts"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- members / contacts -->
+  <div class="members" id="membersColumn">
+    <div class="member-list" id="members"></div>
+
+    <div class="profile-box" id="profileBox" title="Open profile">
+      <div class="profile-info">
+        <div class="profile-avatar">
+          <img src="https://i.pravatar.cc/35?img=64" id="miniAvatar" style="width:35px;height:35px"/>
+          <div class="profile-status" style="background:var(--accent)"></div>
+        </div>
+        <div class="profile-name" id="miniName">NostrBot</div>
+      </div>
+      <div class="profile-actions">
+        <button title="Mute">🎤</button>
+        <button title="Deafen">🔇</button>
+        <button title="Settings">⚙️</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Login Screen Overlay -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <p class="login-sub">Choose how you want to log in</p>
+      <button class="login-option" onclick="loginWithNsec()">🔑 Login with NSEC</button>
+      <button class="login-option" onclick="loginWithExtension()">🧩 Login with Nostr Extension</button>
+      <button class="login-option" onclick="createNewAccount()">🚀 Create New Account</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
