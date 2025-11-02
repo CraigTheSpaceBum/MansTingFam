@@ -40,6 +40,7 @@
 ## 💜 About NoirVu
 
 NoirVu blends sleek cyber aesthetics with the power of the Nostr protocol — built with
-Electron + Nostr-tools for a next-gen decentralized chat and social experience.
+Electron + Nostr-tools for a next-gen decentralized chat and social experience. All open source for anyone to contriubte.
 
-<p align="center"> <sub>© 2025 NoirVu — Built with love by CraigTheSpaceBum and Chatgpt</sub> </p> ```
+<p align="center"> <sub>Built with love by CraigTheSpaceBum and Chatgpt</sub> </p>
+<p>Donations can be zapped to CraigTheSpaceBum@coinos.io</p></p>
