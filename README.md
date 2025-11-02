@@ -5,8 +5,6 @@
 <h1 align="center">NoirVu</h1>
 <p align="center"><strong>The coolest Nostr app. Ever. Period.</strong></p>
 
----
-
 ## 🚀 Getting Started
 
 ### 🪟 Run from Command Prompt
@@ -22,24 +20,24 @@
    ```bash
    npm run start
 
-✨ Working Features
+## ✨ Working Features
 
-✅ Login with Nostr NSECs
-✅ Generate new Nostr Keys
-✅ Post to your personal Nostr feed
-✅ Reply, react, and share notes on Nostr
+<p>✅ Login with Nostr NSECs </p>
+<p>✅ Generate new Nostr Keys</p>
+<p>✅ Post to your personal Nostr feed</p>
+<p>✅ Reply, react, and share notes on Nostr</p>
 
-🧩 Upcoming Features
+## 🧩 Upcoming Features
 
-🕹️ Channel + Channel Chats
-🛰️ Server Backend Integration
-🎙️ Audio & Video Support
-📡 Live Streaming
-🔔 Notifications
-👥 Friends List
-💡 …and much more to come!
+<p>🕹️ Channel + Channel Chats</p>
+<p>🛰️ Server Backend Integration</p>
+<p>🎙️ Audio & Video Support</p>
+<p>📡 Live Streaming</p>
+<p>🔔 Notifications</p>
+<p>👥 Friends List</p>
+<p>💡 …and much more to come!</p>
 
-💜 About NoirVu
+## 💜 About NoirVu
 
 NoirVu blends sleek cyber aesthetics with the power of the Nostr protocol — built with
 Electron + Nostr-tools for a next-gen decentralized chat and social experience.
