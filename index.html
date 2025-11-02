@@ -50,8 +50,8 @@
         <div class="profile-head">
           <div class="profile-pic" id="profilePic"><img id="profilePicImg" src="" /></div>
           <div class="profile-meta">
-            <div class="display-name" id="profileDisplayName">NostrBot</div>
-            <div class="npub small" id="profileNpub">npub1qxyz…</div>
+            <div class="display-name" id="profileDisplayName">Loading..</div>
+            <div class="npub small" id="profileNpub">Loading...</div>
           </div>
         </div>
         <div class="profile-stats">
@@ -61,11 +61,192 @@
         </div>
         <div class="profile-actions-row">
           <button class="btn-outline" onclick="editProfile()">Edit Profile</button>
-          <button class="btn-outline" onclick="toggleProfileView()">Back</button>
+          <button class="btn-outline" onclick="">Share</button>
         </div>
 
        <div id="profileFeed" class="nostr-feed-container"></div>
-       <style>:root{ --feed-bg:#15182100; --post-bg:#1f232e; }#nostrSpinner{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.35);z-index:99998}#nostrSpinner .dot{width:10px;height:10px;border-radius:50%;background:#888;margin:4px;animation:nspin .9s infinite alternate}@keyframes nspin{to{opacity:.2;transform:scale(.6)}}.nostr-composer{background:var(--feed-bg);border:1px solid #222;border-radius:12px;padding:12px;margin:10px 0}.nostr-feed-container{background:var(--feed-bg);border:1px solid #222;border-radius:12px;padding:8px 0;margin-top:10px}.nostr-postcard{background:var(--post-bg);border:1px solid #2f3136;border-radius:12px;padding:12px 14px;margin:8px 12px;transition:background .15s ease}.nostr-postcard:hover{background:#232836}.nostr-inline{display:flex;gap:10px;align-items:flex-start}.nostr-inline .avatar{width:40px;height:40px;border-radius:50%;object-fit:cover}.nostr-meta{font-size:13px;color:#aab}.nostr-name{color:#e6e6e6;font-weight:600}.nostr-npub{color:#889}.nostr-content{font-size:15px;color:#ddd;white-space:pre-wrap;word-break:break-word;margin-top:6px}.nostr-actions{display:flex;gap:16px;margin-top:8px}.nostr-actions button{background:none;border:none;color:#aaa;cursor:pointer}.nostr-threadline{position:absolute;left:16px;top:52px;bottom:8px;width:2px;background:#2a2f3a;border-radius:2px}.mini-profile-avatar, #miniAvatar{width:48px;height:48px;border-radius:10px;object-fit:cover}</style>
+       
+<style>
+:root {
+  /* NoirVu Signature Palette */
+  --noirvu-bg: #0e0e12;
+  --feed-bg: #181a2200;
+  --post-bg: #1e202a;
+  --button-bg: #252733;
+  --button-hover: #322c4a;
+  --accent: #8b5cf6;
+  --accent-soft: #b794ff;
+  --border: #2d2f3c;
+  --text-primary: #e8e8f0;
+  --text-secondary: #aaa;
+  --text-muted: #7a7a9a;
+}
+
+body {
+  background: var(--noirvu-bg);
+  color: var(--text-primary);
+  font-family: "Segoe UI", "Inter", sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* === SPINNER === */
+#nostrSpinner {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 8, 14, 0.6);
+  z-index: 99998;
+  backdrop-filter: blur(6px);
+}
+
+#nostrSpinner .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 4px;
+  animation: nspin 0.8s infinite alternate;
+  box-shadow: 0 0 10px var(--accent-soft);
+}
+
+@keyframes nspin {
+  to {
+    opacity: 0.3;
+    transform: scale(0.6);
+  }
+}
+
+/* === CONTAINERS === */
+.nostr-composer,
+.nostr-feed-container {
+  background: var(--feed-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 10px 0;
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.05),
+              inset 0 0 12px rgba(139, 92, 246, 0.03);
+  transition: all 0.3s ease;
+}
+
+.nostr-composer:hover,
+.nostr-feed-container:hover {
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.15),
+              inset 0 0 20px rgba(139, 92, 246, 0.06);
+}
+
+/* === POST CARD === */
+.nostr-postcard {
+  background: var(--post-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 10px 12px;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nostr-postcard:hover {
+  background: #202234;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.18);
+}
+
+/* === INLINE META === */
+.nostr-inline {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.nostr-inline .avatar {
+ width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.1);
+}
+
+.nostr-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.nostr-name {
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+
+.nostr-npub {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* === CONTENT === */
+.nostr-content {
+  font-size: 15px;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-top: 2px;
+  text-shadow: 0 0 6px rgba(183, 148, 255, 0.05);
+}
+
+/* === ACTION BUTTONS === */
+.nostr-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.nostr-actions button {
+  background: var(--button-bg);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.08);
+}
+
+.nostr-actions button:hover {
+  background: var(--button-hover);
+  color: var(--accent-soft);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+/* === THREAD LINE === */
+.nostr-threadline {
+  position: absolute;
+  left: 16px;
+  top: 52px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.2;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+/* === MINI PROFILES === */
+.mini-profile-avatar,
+#miniAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
+}
+</style>
+
+
+
        <div id="nostrSpinner"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
        <script src="nostr/auth.js"></script>
        <script src="nostr/profile.js"></script>

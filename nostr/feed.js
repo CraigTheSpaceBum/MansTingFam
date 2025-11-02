@@ -8,7 +8,7 @@
     else { c.classList.add('nostr-feed-container'); }
     return c;
   }
-  function composerMarkup(){ return '<div id="nostrComposer" class="nostr-composer" style="margin-top:10px;"><div class="nostr-inline"><img id="composerAvatar" class="avatar" style="display:none;"><textarea id="composerText" rows="3" placeholder="What’s happening? Post" style="flex:1;padding:10px;border-radius:10px;border:1px solid #333;background:#151821;color:#fff;"></textarea><button id="composerPost" style="padding:10px 16px;border:none;border-radius:10px;background:#5a6cff;color:#fff;cursor:pointer;">Post</button></div></div>'; }
+  function composerMarkup(){ return '<div id="nostrComposer" class="nostr-composer" style="margin-top:10px;"><div class="nostr-inline"><img id="composerAvatar" class="avatar" style="display:none;"><textarea id="composerText" rows="3" placeholder="What’s On Your Mind?" style="flex:1;padding:10px;border-radius:10px;border:1px solid #333;background:#151821;color:#fff;"></textarea><button id="composerPost" style="padding:10px 16px;border:none;border-radius:10px;background:#5a6cff;color:#fff;cursor:pointer;">Post</button></div></div>'; }
   function insertComposerUnderProfile(){
     document.querySelectorAll('textarea[placeholder*="post to your Nostr feed" i]').forEach(el=>{ const wrap=el.closest('.feed-composer, .composer, .nostr-composer'); if(wrap) wrap.remove(); else el.remove(); });
     const old=document.getElementById('nostrComposer'); if(old) old.remove();
