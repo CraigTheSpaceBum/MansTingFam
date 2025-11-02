@@ -1,2 +1,2 @@
-# MansTingFam
+# NoirVu
 Great Nostr App Ever PERIOD.
