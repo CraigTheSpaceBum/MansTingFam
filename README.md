@@ -12,13 +12,13 @@ If yo uwant to install as app (run command prompt as admin):
 cd
 npm run dist
 
-#WORKING FEATURES:
+**WORKING FEATURES**
 Login with Nostr NSECs
 Generating New Nostr NSECs
 Posting on personal nostr Feed.
 Replying, Reacting and Sharing to notes on nostr
 
-#WORK TO BE DONE
+**WORK TO BE DONE**
 Channel + Channel chats
 Server backend
 Video, Audio. 
