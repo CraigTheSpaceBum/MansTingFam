@@ -86,21 +86,19 @@
         <button title="Mute">🎤</button>
         <button title="Deafen">🔇</button>
         <button title="Settings">⚙️</button>
+        <button title="Logout">X</button>
       </div>
     </div>
   </div>
-
   
-  <!-- Login Screen Overlay -->
-  <div class="login-screen" id="loginScreen">
-    <div class="login-card">
-      <p class="login-sub">Choose how you want to log in</p>
-      <button class="login-option" onclick="loginWithNsec()">🔑 Login with NSEC</button>
-      <button class="login-option" onclick="loginWithExtension()">🧩 Login with Nostr Extension</button>
-      <button class="login-option" onclick="createNewAccount()">🚀 Create New Account</button>
-    </div>
-  </div>
 
   <script src="script.js"></script>
+  <style>#nostrSpinner{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.35);z-index:99998}#nostrSpinner .dot{width:10px;height:10px;border-radius:50%;background:#888;margin:4px;animation:nspin 0.9s infinite alternate}@keyframes nspin{to{opacity:.2;transform:scale(.6)}} .nostr-composer{background:#11151c;border:1px solid #222;border-radius:12px;padding:10px;margin:8px 0;}</style>
+<div id="nostrSpinner"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<script src="nostr/auth.js"></script>
+<script src="nostr/profile.js"></script>
+<script src="nostr/feed.js"></script>
+<script src="nostr/settings.js"></script>
+<script src="nostr/ui.js"></script>
 
 </html>

@@ -1,22 +1,30 @@
 {
-  "name": "nostrcord-desktop",
+  "name": "noirvu-desktop",
   "version": "1.3.0",
-  "description": "NostrCord v13 \u2014 Electron app",
+  "description": "Noirvu — an Electron-based Nostr app",
+  "author": "Craig",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder --win --x64"
   },
   "build": {
-    "appId": "com.nostrcord.desktop",
-    "productName": "NostrCord",
+    "appId": "com.noirvu.desktop",
+    "productName": "Noirvu",
     "files": [
       "**/*"
     ],
     "win": {
       "target": [
         "nsis"
-      ]
+      ],
+      "icon": "assets/logo.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": false
     }
   },
   "devDependencies": {
